@@ -3,6 +3,7 @@ package com.bookmall.ms.utils;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 
+import javax.sql.DataSource;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,11 +28,14 @@ public class DruidUtils {
     /**
      * 获取数据库连接池数据源对象
      */
-    public static Connection getConnection(){
+    public static DataSource getDataSource(){
+        return druidDataSource;
+    }
+    public static Connection getConnection() {
         Connection connection = null;
-        try{
+        try {
             connection = druidDataSource.getConnection();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return connection;
