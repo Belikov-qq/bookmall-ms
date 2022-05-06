@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://unpkg.zhimg.com/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://bulma.zcopy.site/css/bulma-docs.min.css?v=202203060654">
+    <link rel="stylesheet" href="https://bulma.zcopy.site/css/bulma-docs.min.css">
+    <link rel="stylesheet" href="css/msgstyle.css">
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/msg.js"></script>
+    <script src="js/login.js"></script>
 
     <!--    加密-->
     <!--    <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.js"></script>-->
@@ -23,7 +25,7 @@
 
         .title {
             color: #fff;
-            text-shadow: 5px 5px 5px #000000;
+            text-shadow: 3px 3px 3px #000000;
             font-size: 30px;
             font-weight: bold;
             position: absolute;
@@ -35,7 +37,7 @@
 
 <body>
 <div class="container" id="login_header">
-    <h1 class="title">在线书城后台管理系统-欢迎你登录</h1>
+    <h1 class="title">在线书城后台管理系统-欢迎您登录</h1>
 </div>
 
 <div class="container" id="login_content">
@@ -72,10 +74,10 @@
                             <div class="control">
                                 <div class="columns">
                                     <div class="column is-two-thirds">
-                                        <input class="input" placeholder="验证码">
+                                        <input class="input" placeholder="验证码" id="captcha">
                                     </div>
                                     <div class="column">
-                                        <img src="" width="100" height="30" id="captcha"/>
+                                        <img src="" width="100" height="30" id="captcha_img"/>
                                     </div>
                                 </div>
                             </div>
@@ -92,16 +94,7 @@
         </div>
     </div>
 </div>
-<img src="img/login_bg.jpg" alt="background">
-<!--<div class="qmsg qmsg-wrapper qmsg-is-initialized"></div> &lt;!&ndash; 显示消息  &ndash;&gt;-->
+<img src="img/login_bg.png" alt="background">
+<div class="qmsg qmsg-wrapper qmsg-is-initialized"></div> <!-- 显示消息  -->
 </body>
-<script>
-    $(function () {
-        $('#loginBtn').bind("click").on("click", function () {
-            var username = $('#username').val();
-            var password = $('#password').val();
-            console.log(username, password);
-        });
-    });
-</script>
 </html>
