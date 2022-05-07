@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://unpkg.zhimg.com/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://bulma.zcopy.site/css/bulma-docs.min.css">
+    <link rel="stylesheet" href="css/msgstyle.css">
+    <link rel="stylesheet" href="css/monitor.css">
+    <link rel="stylesheet" href="css/form.css">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/msg.js"></script>
+</head>
+<body>
+<nav id="navbar" class="bd-navbar navbar">
+    <strong class="navbar-title">在线书城后台管理系统</strong>
+
+</nav>
+<main id="docs" class="bd-docs bd-is-contained">
+    <nav id="docsNav" class="bd-docs-nav ">
+        <nav id="categories" class="bd-categories">
+            <p class="bd-category-group">图书信息管理</p>
+            <div class="bd-category is-current">
+                <header class="bd-category-header">
+                    <a class="bd-category-name" href="book-add.html" data-name="book-add">
+                        <strong class="bd-name">添加图书</strong>
+                    </a>
+                </header>
+            </div>
+            <div class="bd-category">
+                <header class="bd-category-header">
+                    <a class="bd-category-name" href="book-list.html" data-name="book-list">
+                        <strong class="bd-name">图书列表</strong>
+                    </a>
+                </header>
+            </div>
+            <p class="bd-category-group">订单管理</p>
+            <div class="bd-category">
+                <header class="bd-category-header">
+                    <a class="bd-category-name" href="" data-name="order-maintenance">
+                        <strong class="bd-name">订单维护</strong>
+                    </a>
+                </header>
+            </div>
+            <div class="bd-category">
+                <header class="bd-category-header">
+                    <a class="bd-category-name" href="" data-name="order-list">
+                        <strong class="bd-name">订单列表</strong>
+                    </a>
+                </header>
+            </div>
+        </nav>
+    </nav>
+    <main class="bd-docs-main">
+        <div class="bd-content">
+            <div class="bd-index">
+                <div class="bd-index-content">
+
+                    <div id="container">
+                        <div class="field">
+                            <label class="label">图书ID</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="ID">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">图书名称</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="名称">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">图书作者</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="作者">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">图书价格</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="价格">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">图书封面</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="封面">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">图书描述</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="描述"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">图书库存</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="库存">
+                            </div>
+                        </div>
+
+                        <div class="field">
+
+                            <label class="label">图书类型</label>
+
+                            <div class="control">
+                                <label class="radio">
+                                    <input type="radio" name="bookType" value="1"/>
+                                    原创
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="bookType" value="2"/>
+                                    翻译
+                                </label>
+                            </div>
+                        </div>
+                        <button class="button is-primary is-fullwidth" id="bookaddBtn">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</main>
+</div>
+<div class="qmsg qmsg-wrapper qmsg-is-initialized"></div> <!-- 显示消息  -->
+</body>
+</html>
