@@ -18,7 +18,7 @@ public class BookDAO {
     /**
      * 添加图书信息操作
      */
-    private int insertBook(Book book){
+    public int insertBook(Book book){
         int i = 0;
         try {
             String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_img_path,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?,?)";
@@ -71,7 +71,7 @@ public class BookDAO {
     /**
      * 根据图书ID删除一个图书信息
      */
-    private int deleteBook(String bookId){
+    public int deleteBook(String bookId){
         int i = 0;
         try {
             String sql = "delete from books where book_id=?";
@@ -101,7 +101,7 @@ public class BookDAO {
     /**
      * 根据图书ID修改一个图书信息
      */
-    private int updateBook(Book book){
+    public int updateBook(Book book){
         int i = 0;
         try {
             String sql = "update books set book_name=?,book_author=?,book_price=?,book_img_path=?,book_desc=?,book_stock=?,book_type=? where book_id=?";
@@ -113,5 +113,8 @@ public class BookDAO {
             e.printStackTrace();
         }
         return i;
+    }
+
+    public List<Book> selectBooks() {
     }
 }
