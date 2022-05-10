@@ -13,6 +13,7 @@ function getInfo(page) {
         }
     });
 }
+
 function showInfo(data) {
     var html = '';
     for (var i = 0; i < data['result'].length; i++) {
@@ -32,4 +33,52 @@ function showInfo(data) {
         html += '</tr>';
     }
     $('tbody').html(html);
+}
+
+function getCurrentPage() {
+    var a = $('#page');
+    if (a.length > 0) {
+        return parseInt(a[0].innerText.split('/')[0]);
+    } else {
+        return 1;
+    }
+}
+
+function prevPage() {
+    var page = getCurrentPage();
+    if (page > 1) {
+        getInfo(page - 1);
+    }else {
+        Message('error', '已经是第一页了');
+    }
+}
+
+function nextPage() {
+    var page = getCurrentPage();
+    getInfo(page + 1);
+}
+
+function deleteBook(id) {
+    $.ajax({
+        url: 'http://localhost:5000/delete',
+        type: 'POST',
+        data: {
+            "id": id,
+        },
+        cookie: true,
+        success: function (data) {
+            var j = JSON.parse(data);
+            if (j['status'] == 'success') {
+                Message('success', '删除成功');
+            }
+        }
+    });
+}
+
+function firstPage() {
+    getInfo(1);
+}
+
+function lastPage() {
+    getInfo(-1);
 }
