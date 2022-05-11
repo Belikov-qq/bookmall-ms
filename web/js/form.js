@@ -6,9 +6,8 @@ $(function () {
                 book_info[ids[i]] = $('#' + ids[i]).val();
             }
             book_info['type'] = $('input[name="bookType"]:checked').val();
-            book_info = JSON.stringify(book_info);
             $.ajax({
-                url: "",
+                url: "http://localhost:5000/submit",
                 type: "POST",
                 data: book_info,
                 beforeSend: function () {

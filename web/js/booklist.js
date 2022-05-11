@@ -9,18 +9,19 @@ function getInfo(page) {
         success: function (data) {
             console.log(data);
             var j = JSON.parse(data);
-            showInfo(j)
+            showInfo(j, page)
         }
     });
 }
 
-function showInfo(data) {
+function showInfo(data, page) {
     var html = '';
+    var pagetext = '';
     for (var i = 0; i < data['result'].length; i++) {
         html += '<tr>';
         html += '<td>' + data['result'][i]['id'] + '</td>';
         html += '<td><img src="' + data['result'][i]['cover'] + '" alt=""></td>';
-        html += '<td>' + data['result'][i]['title'] + '</td>';
+        html += '<td>' + data['result'][i]['name'] + '</td>';
         html += '<td>' + data['result'][i]['author'] + '</td>';
         html += '<td>￥' + data['result'][i]['price'] + '</td>';
         html += '<td>' + data['result'][i]['left'] + '</td>';
@@ -32,35 +33,43 @@ function showInfo(data) {
         html += '</td>';
         html += '</tr>';
     }
+    var toalpage = data['total'];
+    pagetext = (page + 1) + '/' + (toalpage + 1);
     $('tbody').html(html);
+    $('#page').text(pagetext);
 }
 
-function getCurrentPage() {
+function getPage() {
     var a = $('#page');
     if (a.length > 0) {
-        return parseInt(a[0].innerText.split('/')[0]);
+        var p = a[0].innerText.split('/');
+        return [parseInt(p[0]) - 1, parseInt(p[1]) - 1];
     } else {
         return 1;
     }
 }
 
 function prevPage() {
-    var page = getCurrentPage();
-    if (page > 1) {
-        getInfo(page - 1);
+    var page = getPage();
+    if (page[0] > 1) {
+        getInfo(page[0] - 1);
     }else {
         Message('error', '已经是第一页了');
     }
 }
 
 function nextPage() {
-    var page = getCurrentPage();
-    getInfo(page + 1);
+    var page = getPage();
+    if (page[0] < page[1]) {
+        getInfo(page[0] + 1);
+    }else {
+        Message('error', '已经是最后一页了');
+    }
 }
 
 function deleteBook(id) {
     $.ajax({
-        url: 'http://localhost:5000/delete',
+        url: 'delete',
         type: 'POST',
         data: {
             "id": id,
@@ -76,9 +85,13 @@ function deleteBook(id) {
 }
 
 function firstPage() {
-    getInfo(1);
+    getInfo(0);
 }
 
 function lastPage() {
-    getInfo(-1);
+    getInfo(getPage()[1]);
+}
+
+function modifyBook(id){
+    window.location = 'book-modify.html?id=' + id;
 }
