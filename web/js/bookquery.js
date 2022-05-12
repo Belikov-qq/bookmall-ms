@@ -7,7 +7,7 @@ function getUrlPara(name) {
 function initInfo(){
     var id = parseInt(getUrlPara('id'));
     $.ajax({
-        url: 'http://localhost:5000/getInfoById',
+        url: 'getInfoById',
         type: 'POST',
         data: {
             'id': id

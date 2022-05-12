@@ -1,6 +1,6 @@
 function getInfo(page) {
     $.ajax({
-        url: 'http://localhost:5000/list',
+        url: 'list',
         type: 'POST',
         data: {
             "page": page,
@@ -89,9 +89,10 @@ function firstPage() {
 }
 
 function lastPage() {
-    getInfo(getPage()[1]);
+    getInfo(getPage()[1]-1);
 }
 
 function modifyBook(id){
     window.location = 'book-modify.html?id=' + id;
 }
+
