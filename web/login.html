@@ -3,101 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://unpkg.zhimg.com/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://bulma.zcopy.site/css/bulma-docs.min.css?v=202203060654">
-    <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js"></script>
+    <link rel="stylesheet" href="https://bulma.zcopy.site/css/bulma-docs.min.css?v=202205010218">
+    <link rel="stylesheet" href="css/msgstyle.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/msg.js"></script>
+    <script src="js/login.js"></script>
 
+    <!--    加密-->
+    <!--    <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.js"></script>-->
+    <!--    <script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js"></script>-->
 
     <style>
-        #login-card{
-            position: absolute;
-            width: 500px;
-            right: 50px;
-            top: 150px;
-        }
-        .title{
-            color: #fff;
-            text-shadow: 5px 5px 5px #000000;
-            font-size: 30px;
-            font-weight: bold;
-            position: absolute;
-            top: 30px;
-            right: 450px;
-        }
+
     </style>
 </head>
 
 <body>
-    <div class="container" id="login_header">
-        <h1 class="title">在线书城后台管理系统-欢迎你登录</h1>
-    </div>
+<div class="container" id="login_header">
+    <h1 class="title">在线书城后台管理系统-欢迎您登录</h1>
+</div>
 
-    <div class="container" id="login_content">
-        <div class="columns" id="login-table">
-            <div class="column is-half is-offset-one-quarter" id="login-card">
-                <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title">
-                            管理员登录
-                        </p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <div class="field">
-                                <label class="label">用户名</label>
-                                <div class="control has-icons-left has-icons-right">
-                                    <input class="input" type="text" placeholder="用户名" id="username">
-                                    <span class="icon is-small is-left">
+<div class="container" id="login_content">
+    <div class="columns" id="login-table">
+        <div class="column is-half is-offset-one-quarter" id="login-card">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        管理员登录
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <div class="field">
+                            <label class="label">用户名</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" type="text" placeholder="用户名" id="username">
+                                <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
-                                </div>
                             </div>
-                            <div class="field">
-                                <label class="label">密码</label>
-                                <div class="control has-icons-left">
-                                    <input class="input" type="password" placeholder="密码" id="password">
-                                    <span class="icon is-small is-left">
+                        </div>
+                        <div class="field">
+                            <label class="label">密码</label>
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" placeholder="密码" id="password">
+                                <span class="icon is-small is-left">
                                       <i class="fas fa-lock"></i>
                                     </span>
-                                </div>
                             </div>
-                            <div class="field">
-                                <label class="label">验证码</label>
-                                <div class="control">
-                                    <div class="columns">
-                                        <div class="column is-two-thirds">
-                                            <input class="input" placeholder="验证码">
-                                        </div>
-                                        <div class="column">
-                                            <img src="" width="100" height="30" id="captcha" />
-                                        </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">验证码</label>
+                            <div class="control">
+                                <div class="columns">
+                                    <div class="column is-two-thirds">
+                                        <input class="input" placeholder="验证码" id="captcha">
+                                    </div>
+                                    <div class="column">
+                                        <img src="" width="100" height="30" id="captcha_img"/>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="field is-grouped">
-                                <p class="control">
-                                    <button class="button is-primary" id="loginBtn" onclick="login()">登录</button>
-                                </p>
-                            </div>
+                        <div class="field is-grouped">
+                            <button class="button is-primary is-fullwidth" id="loginBtn">登录</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <img src="img/login_bg.jpg" alt="background">
-    <div class="qmsg qmsg-wrapper qmsg-is-initialized"></div> <!-- 显示消息  -->
+</div>
+<img src="img/login_bg.jpg" alt="background">
+<div class="qmsg qmsg-wrapper qmsg-is-initialized"></div> <!-- 显示消息  -->
 </body>
-<script>
-    function login() {
-        var username = $('#username').val();
-        var password = $('#password').val();
-        console.log(username, password);
-    }
-</script>
 </html>

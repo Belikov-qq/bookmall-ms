@@ -1,0 +1,40 @@
+.bd-docs-nav {
+    position: relative;
+    top: -2px;
+    --primary: #fff;
+    background-color: #151822;
+}
+
+.bd-category.is-current .bd-category-name {
+    background-color: #006eff;
+}
+
+.bd-name {
+    color: white;
+}
+
+.bd-category-name:hover {
+    background-color: #3c3f41;
+}
+
+.navbar {
+    background-color: #262f3e;
+}
+
+.navbar-title {
+    color: #fff;
+}
+
+.bd-docs-main {
+    position: relative;
+    top: 30px;
+    left: 50px;
+}
+
+.button.is-primary {
+    background-color: #006eff;
+}
+
+.button.is-primary:hover {
+    background-color: rgba(0, 110, 255, 0.87);
+}
