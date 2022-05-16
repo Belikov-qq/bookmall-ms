@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Java EE 6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../Program Files/apache-tomcat-8.0.45/lib/servlet-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
