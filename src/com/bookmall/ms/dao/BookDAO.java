@@ -114,7 +114,4 @@ public class BookDAO {
         }
         return i;
     }
-
-    public List<Book> selectBooks() {
-    }
 }
