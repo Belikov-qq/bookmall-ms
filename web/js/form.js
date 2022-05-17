@@ -3,7 +3,7 @@ $(function () {
 });
 
 $(function () {
-    $('#BookModifyBtn').bind("click").on("click", function (){submit('/bookmall_ms/modify', 'bookModifyBtn')});
+    $('#bookModifyBtn').bind("click").on("click", function (){submit('/bookmall_ms/modify', 'bookModifyBtn')});
 });
 
 function submit(url, id){
