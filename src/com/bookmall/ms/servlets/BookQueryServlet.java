@@ -3,6 +3,7 @@ package com.bookmall.ms.servlets;
 import com.alibaba.fastjson.JSONObject;
 import com.bookmall.ms.dao.BookDAO;
 import com.bookmall.ms.dto.Book;
+import com.bookmall.ms.service.BookService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/bookquery")  // 暂定
+@WebServlet("/search")
 public class BookQueryServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -25,10 +26,8 @@ public class BookQueryServlet extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
 
-        int id = Integer.parseInt(request.getParameter("id"));
-
-        BookDAO bookDAO = new BookDAO();
-        Book book = bookDAO.selectBooksByBookId(String.valueOf(id));
+        BookService bookService = new BookService();
+        Book book = bookService.getBook(request.getParameter("id"));
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", book.getBookId());

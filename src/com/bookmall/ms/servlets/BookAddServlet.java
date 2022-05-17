@@ -3,6 +3,7 @@ package com.bookmall.ms.servlets;
 import com.alibaba.fastjson.JSON;
 import com.bookmall.ms.dao.BookDAO;
 import com.bookmall.ms.dto.Book;
+import com.bookmall.ms.service.BookService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,15 +39,13 @@ public class BookAddServlet extends HttpServlet {
         book.setBookType(request.getParameter("type"));
 
         //向数据库中添加记录
-        BookDAO bookDAO = new BookDAO();
-        int status = bookDAO.insertBook(book);
+        BookService bookService = new BookService();
+        boolean flag = bookService.saveBook(book);
 
         // 封装返回数据
         Map<String, Object> map = new HashMap<>();
-        // map.put("status", status);
-        map.put("status", 1); // 后续改为status
-        // String msg = status == 1 ? "添加成功" : "添加失败";
-        String msg = "添加成功"; // 后续修改
+        map.put("error", flag ? 0 : -1);
+        String msg = flag ? "添加成功" : "添加失败";
         map.put("msg", msg);
 
         // 将map转换为json字符串

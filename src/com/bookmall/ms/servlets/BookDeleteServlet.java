@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.bookmall.ms.dao.BookDAO;
+import com.bookmall.ms.service.BookService;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,20 +28,13 @@ public class BookDeleteServlet extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
 
-        // 获取参数
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
-
-        // 依据bookId删除数据库中的记录
-        BookDAO bookDAO = new BookDAO();
-        int status = bookDAO.deleteBook(String.valueOf(bookId));
+        BookService bookService = new BookService();
+        boolean flag = bookService.deleteBook(request.getParameter("bookId"));
 
         // 封装返回数据
         Map<String, Object> map = new HashMap<>();
-        // map.put("status", status);
-        map.put("status", 1); // 后续改为status
-        // String msg = status == 1 ? "删除成功" : "删除失败";
-        String msg = "删除成功"; // 后续修改
-        map.put("msg", msg);
+        map.put("error", flag ? 0 : -1);
+        map.put("msg", flag ? "删除成功" : "删除失败");
 
         // 将map转换为json字符串
         String json = JSON.toJSONString(map);

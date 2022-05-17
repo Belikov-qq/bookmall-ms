@@ -3,6 +3,7 @@ package com.bookmall.ms.servlets;
 import com.alibaba.fastjson.JSON;
 import com.bookmall.ms.dao.BookDAO;
 import com.bookmall.ms.dto.Book;
+import com.bookmall.ms.service.BookService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,31 +28,23 @@ public class BookModifyServlet extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
 
-        //获取参数
-        String bookId = request.getParameter("bookId");
-
         //根据bookId修改数据库中记录
-        BookDAO bookDAO = new BookDAO();
-        Book book = bookDAO.selectBooksByBookId(bookId);
-        int status = 1;
+        BookService bookService = new BookService();
+        Book book = new Book();
+        book.setBookId(request.getParameter("bookId"));
+        book.setBookName(request.getParameter("name"));
+        book.setBookAuthor(request.getParameter("author"));
+        book.setBookPrice(request.getParameter("price"));
+        book.setBookImgPath(request.getParameter("cover"));
+        book.setBookDesc(request.getParameter("desc"));
+        book.setBookType(request.getParameter("type"));
 
-        if(book != null){
-            book.setBookName(request.getParameter("name"));
-            book.setBookAuthor(request.getParameter("author"));
-            book.setBookPrice(request.getParameter("price"));
-            book.setBookImgPath(request.getParameter("cover"));
-            book.setBookDesc(request.getParameter("desc"));
-            book.setBookType(request.getParameter("type"));
-        }else {
-            status = 0;
-        }
+        boolean flag = bookService.modifyBook(book);
+
 
         Map<String, Object> map = new HashMap<>();
-        //map.put("status", status);
-        map.put("status", 1); // 后续改为status
-        // String msg = status == 1 ? "修改成功" : "修改失败";
-        String msg = "修改成功"; // 后续修改
-        map.put("msg", msg);
+        map.put("error", flag ? 0 : -1);
+        map.put("msg", flag ? "修改成功" : "修改失败");
 
         // 将map转换为json字符串
         String json = JSON.toJSONString(map);

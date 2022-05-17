@@ -1,6 +1,6 @@
 function getInfo(page) {
     $.ajax({
-        url: 'list',
+        url: '/bookmall_ms/list',
         type: 'POST',
         data: {
             "page": page,
@@ -10,6 +10,10 @@ function getInfo(page) {
             console.log(data);
             var j = JSON.parse(data);
             showInfo(j, page)
+        },
+        error: function (e) {
+            Message("error", "获取数据失败！");
+            console.log(e);
         }
     });
 }
@@ -69,7 +73,7 @@ function nextPage() {
 
 function deleteBook(id) {
     $.ajax({
-        url: 'delete',
+        url: '/bookmall_ms/delete',
         type: 'POST',
         data: {
             "id": id,
@@ -77,10 +81,16 @@ function deleteBook(id) {
         cookie: true,
         success: function (data) {
             var j = JSON.parse(data);
-            if (j['status'] == 'success') {
+            if (j['error'] == 0) {
                 Message('success', '删除成功');
+                getInfo(getPage()[0]);
+            }else {
+                Message('error', '删除失败');
             }
-        }
+        },
+        error: function () {
+            Message('error', '服务器错误，删除失败');
+        },
     });
 }
 

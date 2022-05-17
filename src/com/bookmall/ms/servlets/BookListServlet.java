@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bookmall.ms.dto.Book;
 import com.bookmall.ms.dao.BookDAO;
+import com.bookmall.ms.service.BookService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet(name = "BookListServlet", urlPatterns = "/bookList")
+@WebServlet(name = "BookListServlet", urlPatterns = "/list")
 public class BookListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -29,20 +30,19 @@ public class BookListServlet extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         response.setCharacterEncoding("utf-8");
 
-        BookDAO bookDAO = new BookDAO();
+        BookService bookService = new BookService();
 
         // 获取参数
         int page = Integer.parseInt(request.getParameter("page"));
 
         int limit = 10;  // 每页显示几条
-        long total = bookDAO.selectBookCount();  // 总记录数
-        long pageCount = total / limit + (total % limit == 0 ? 0 : 1);  // 总页数
+        long pageCount  = bookService.getPageCount(limit);
         if (page == -1){
             page = (int) pageCount - 1;
         }
 
         // 依据page获取BookList
-        List<Book> bookList = bookDAO.selectBooks(10 * page, 10);
+        List<Book> bookList = bookService.listBooksByPage(page + 1, limit);
 
         // 将BookList转换为JSONArray
         JSONArray jsonArray = new JSONArray();
@@ -59,10 +59,8 @@ public class BookListServlet extends HttpServlet {
         }
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("bookList", jsonArray);
-//        jsonObject.put("bookList", null);  // 测试
         jsonObject.put("page", page);
         jsonObject.put("total", pageCount);
-//        jsonObject.put("total", 10);  // 测试
 
         // 转换为json字符串
         String json = JSON.toJSONString(jsonObject);
