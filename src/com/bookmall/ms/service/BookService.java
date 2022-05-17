@@ -51,11 +51,26 @@ public class BookService {
     }
 
     /**
-     * 查询所有图书信息
-     * @return
+     * 查询分页图书信息
+     * @param pageNum 查询页码
+     * @param pageSize 页面容量
+     * @return 分页图书信息
      */
-    public List<Book> listBooks() {
-        List<Book> bookList = bookDAO.selectBooks();
+    public List<Book> listBooksByPage(int pageNum,int pageSize) {
+        int start=(pageNum-1)*pageSize;
+        List<Book> bookList = bookDAO.selectBooks(start,pageSize);
         return bookList;
+    }
+
+    /**
+     * 查询总页数
+     * @param pageSize 页面容量
+     * @return 页面总数
+     */
+
+    public int getPageCount(int pageSize){
+        long count=bookDAO.selectBookCount();
+        long pageCount=count%pageSize==0?count/pageSize:count/pageSize+1;
+        return (int)pageCount;
     }
 }
