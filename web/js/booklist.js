@@ -30,7 +30,7 @@ function showInfo(data, page) {
         html += '<td>￥' + data['result'][i]['price'] + '</td>';
         html += '<td>' + data['result'][i]['left'] + '</td>';
         html += '<td>' + data['result'][i]['desc'] + '</td>';
-        html += '<td>' + ((data['result'][i]['type'] == 1) ? "原创" : "翻译" ) + '</td>';
+        html += '<td>' + data['result'][i]['type'] + '</td>';
         html += '<td>';
         html += '<button class="button is-small" onclick="modifyBook(\'' + data['result'][i]['id']+'\')">修改</button>';
         html += '<button class="button is-small" onclick="deleteBook(\'' + data['result'][i]['id']+'\')">删除</button>';
