@@ -7,7 +7,7 @@ function getUrlPara(name) {
 function initInfo(){
     var id = parseInt(getUrlPara('id'));
     $.ajax({
-        url: '/bookmall_ms/search',
+        url: '/bookmall_ms/BookQueryServlet',
         type: 'POST',
         data: {
             'id': id
