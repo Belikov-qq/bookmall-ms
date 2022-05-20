@@ -11,6 +11,6 @@
     <title>Hello World</title>
   </head>
   <body>
-  $END$
+<%--  <script>window.location = "/bookmall_ms/login.html"</script>--%>
   </body>
 </html>

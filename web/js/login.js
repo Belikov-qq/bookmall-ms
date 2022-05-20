@@ -2,15 +2,13 @@ $(function () {
     $('#loginBtn').bind("click").on("click", function () {
         var username = $('#username').val();
         var password = $('#password').val();
-        var captcha = $('#captcha').val();
         console.log(username, password);
         $.ajax({
-            url: "",
+            url: "/bookmall_ms/login",
             type: "POST",
             data: {
                 username: username,
                 password: password,
-                captcha: captcha
             },
             beforeSend: function () {
                 $('#loginBtn').attr('disabled', true);
@@ -18,6 +16,18 @@ $(function () {
                     Message('warning', '请填写完整信息');
                     $('#loginBtn').attr('disabled', false);
                     return false;
+                }
+            },
+            success: function (data) {
+                var j = JSON.parse(data);
+                if (j["status"] == 1) {
+                    Message('success', '登录成功');
+                    setTimeout(function () {
+                        window.location.href = '/bookmall_ms/book-add.html';
+                    }, 1000);
+                } else {
+                    Message('warning', j["msg"]);
+                    $('#loginBtn').attr('disabled', false);
                 }
             },
             complete: function () {

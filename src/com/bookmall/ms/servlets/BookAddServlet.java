@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.bookmall.ms.service.HtmlEscaper.escape;
+
 @WebServlet(name = "BookAddServlet")
 public class BookAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -30,13 +32,13 @@ public class BookAddServlet extends HttpServlet {
 
         Book book = new Book();
         //设置参数
-        book.setBookId(request.getParameter("bookId"));
-        book.setBookName(request.getParameter("name"));
-        book.setBookAuthor(request.getParameter("author"));
-        book.setBookPrice(request.getParameter("price"));
-        book.setBookImgPath(request.getParameter("cover"));
-        book.setBookDesc(request.getParameter("desc"));
-        book.setBookType(request.getParameter("type"));
+        book.setBookId(escape(request.getParameter("bookId")));
+        book.setBookName(escape(request.getParameter("name")));
+        book.setBookAuthor(escape(request.getParameter("author")));
+        book.setBookPrice(escape(request.getParameter("price")));
+        book.setBookImgPath(escape(request.getParameter("cover")));
+        book.setBookDesc(escape(request.getParameter("desc")));
+        book.setBookType(escape(request.getParameter("type")));
 
         //向数据库中添加记录
         BookService bookService = new BookService();

@@ -1,6 +1,6 @@
 function getInfo(page) {
     $.ajax({
-        url: '/bookmall_ms/BookListServlet',
+        url: '/bookmall_ms/list',
         type: 'POST',
         data: {
             "page": page,
@@ -73,7 +73,7 @@ function nextPage() {
 
 function deleteBook(id) {
     $.ajax({
-        url: '/bookmall_ms/BookDeleteServlet',
+        url: '/bookmall_ms/delete',
         type: 'POST',
         data: {
             "id": id,

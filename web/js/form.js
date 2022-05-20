@@ -1,9 +1,9 @@
 $(function () {
-    $('#bookAddBtn').bind("click").on("click", function (){submit('/bookmall_ms/BookAddServlet', 'bookAddBtn')});
+    $('#bookAddBtn').bind("click").on("click", function (){submit('/bookmall_ms/add', 'bookAddBtn')});
 });
 
 $(function () {
-    $('#bookModifyBtn').bind("click").on("click", function (){submit('/bookmall_ms/BookModifyServlet', 'bookModifyBtn')});
+    $('#bookModifyBtn').bind("click").on("click", function (){submit('/bookmall_ms/modify', 'bookModifyBtn')});
 });
 
 function submit(url, id){
