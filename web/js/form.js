@@ -18,6 +18,7 @@ function submit(url, id){
         url: url,
         type: "POST",
         data: book_info,
+        cookie: true,
         beforeSend: function () {
             $('#'+id).attr('disabled', true);
             if (book_info["bookId"] == '') {
