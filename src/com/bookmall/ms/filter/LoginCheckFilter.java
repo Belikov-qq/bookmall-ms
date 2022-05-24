@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class LoginCheckFilter implements Filter {
     @Override
@@ -15,8 +16,14 @@ public class LoginCheckFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) servletRequest).getSession();
         if (session.getAttribute("user") == null) {
-            servletRequest.getRequestDispatcher("/login.html").forward(servletRequest, servletResponse);
+            String tempData = "{\"error\": -2,\"msg\":\"请先登录\"}";
+            servletResponse.setContentType("application/json;charset=UTF-8");
+            ServletOutputStream out = servletResponse.getOutputStream();
+            out.write(tempData.getBytes(StandardCharsets.UTF_8));
+            out.flush();
+            out.close();
         }
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

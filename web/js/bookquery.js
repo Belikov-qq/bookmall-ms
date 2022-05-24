@@ -18,6 +18,13 @@ function initInfo(){
         },
         success: function (data){
             var j = JSON.parse(data);
+            if (j["error"] == -2){
+                Message("warning", "请先登录");
+                setTimeout(function () {
+                    window.location.href = "/bookmall_ms/login.html";
+                }, 2000);
+                return;
+            }
             $('#name')[0].value = j['result'].hasOwnProperty('name') ? j['result']['name'] : '';
             $('#author')[0].value = j['result'].hasOwnProperty('author') ? j['result']['author'] : '';
             $('#price')[0].value = j['result'].hasOwnProperty('price') ? j['result']['price'] : '';

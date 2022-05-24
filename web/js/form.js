@@ -28,6 +28,13 @@ function submit(url, id){
         },
         success: function (data){
             var j = JSON.parse(data);
+            if (j["error"] == -2){
+                Message("warning", "请先登录");
+                setTimeout(function () {
+                    window.location.href = "/bookmall_ms/login.html";
+                }, 2000);
+                return;
+            }
             if (j['error'] == 0){
                 Message('success', j['msg']);
             } else {

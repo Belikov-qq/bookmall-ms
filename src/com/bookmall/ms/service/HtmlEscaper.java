@@ -2,6 +2,9 @@ package com.bookmall.ms.service;
 
 public class HtmlEscaper {
     public static String escape(String s) {
+        if (s == null) {
+            return null;
+        }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
