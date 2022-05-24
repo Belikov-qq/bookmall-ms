@@ -19,7 +19,7 @@ public class LoginCheckFilter implements Filter {
         HttpSession session = ((HttpServletRequest) servletRequest).getSession();
         boolean isGet = ((HttpServletRequest) servletRequest).getMethod().equalsIgnoreCase("GET");
         boolean isHtml = uri.endsWith(".html");
-        if (uri.endsWith("login")) {
+        if (uri.endsWith("login") || uri.endsWith("login.html")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
