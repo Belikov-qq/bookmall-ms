@@ -24,6 +24,7 @@ public class LoginCheckFilter implements Filter {
         for (String s : staticResources) {
             if (uri.endsWith(s)) {
                 isOtherStatic = true;
+                break;
             }
         }
         if (uri.endsWith("login") || uri.endsWith("login.html") || isOtherStatic) {
