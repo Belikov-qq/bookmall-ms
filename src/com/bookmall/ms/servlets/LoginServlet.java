@@ -26,6 +26,8 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json;charset=utf-8");
+        response.setCharacterEncoding("utf-8");
         UserDAO userDAO = new UserDAO();
         User user = userDAO.selectUserByUserName(request.getParameter("username"));
         int status = 0;
