@@ -30,6 +30,9 @@ $(function () {
                     $('#loginBtn').attr('disabled', false);
                 }
             },
+            error: function (data) {
+                Message('warning', '服务器错误');
+            },
             complete: function () {
                 $('#loginBtn').attr('disabled', false);
             },
