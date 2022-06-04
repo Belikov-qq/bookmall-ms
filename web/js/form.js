@@ -28,7 +28,7 @@ function submit(url, id){
             }
         },
         success: function (data){
-            var j = JSON.parse(data);
+            var j = typeof(data) == 'object' ? data : JSON.parse(data);
             if (j["error"] == -2){
                 Message("warning", "请先登录");
                 setTimeout(function () {

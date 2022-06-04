@@ -7,7 +7,7 @@ function getInfo(page) {
         },
         cookie: true,
         success: function (data) {
-            var j = JSON.parse(data);
+            var j = typeof(data) == 'object' ? data : JSON.parse(data);
             if (j["error"] == -2){
                 Message("warning", "请先登录");
                 setTimeout(function () {
@@ -16,7 +16,6 @@ function getInfo(page) {
                 return;
             }
             console.log(data);
-            var j = JSON.parse(data);
             showInfo(j, page)
         },
         error: function (e) {
@@ -88,7 +87,7 @@ function deleteBook(id) {
         },
         cookie: true,
         success: function (data) {
-            var j = JSON.parse(data);
+            var j = typeof(data) == 'object' ? data : JSON.parse(data);
             if (j["error"] == -2){
                 Message("warning", "请先登录");
                 setTimeout(function () {
