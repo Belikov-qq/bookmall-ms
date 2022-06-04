@@ -21,7 +21,7 @@ public class BookDAO {
     public int insertBook(Book book){
         int i = 0;
         try {
-            String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?)";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             //给SQL中的参数赋值
             Object[] params = {book.getBookId(), book.getBookName(), book.getBookAuthor(), book.getBookPrice(), book.getBookDesc(),book.getBookStock(), book.getBookType()};
