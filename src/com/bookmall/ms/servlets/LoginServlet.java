@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         User user = userDAO.selectUserByUserName(request.getParameter("username"));
         int status = 0;
         if(user != null){
-            if(user.getUserPwd() == request.getParameter("password")){
+            if(user.getUserPwd().equals(request.getParameter("password"))){
                 status = 1;
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
