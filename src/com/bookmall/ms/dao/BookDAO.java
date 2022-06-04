@@ -79,8 +79,6 @@ public class BookDAO {
             String sql = "delete from books where book_id=?";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             i = queryRunner.update(sql, bookId);
-            System.out.println(i);
-            System.out.println(bookId);
         } catch (SQLException e) {
             e.printStackTrace();
         }
