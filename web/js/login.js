@@ -19,14 +19,13 @@ $(function () {
                 }
             },
             success: function (data) {
-                var j = JSON.parse(data);
-                if (j["status"] == 1) {
+                if (data["status"] == 1) {
                     Message('success', '登录成功');
                     setTimeout(function () {
                         window.location.href = '/bookmall_ms/book-add.html';
                     }, 1000);
                 } else {
-                    Message('warning', j["msg"]);
+                    Message('warning', data["msg"]);
                     $('#loginBtn').attr('disabled', false);
                 }
             },
