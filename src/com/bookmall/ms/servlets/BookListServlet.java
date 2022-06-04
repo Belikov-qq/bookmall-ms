@@ -58,7 +58,7 @@ public class BookListServlet extends HttpServlet {
             jsonArray.add(jsonObject);
         }
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("bookList", jsonArray);
+        jsonObject.put("result", jsonArray);
         jsonObject.put("page", page);
         jsonObject.put("total", pageCount);
 
