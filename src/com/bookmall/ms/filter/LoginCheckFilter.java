@@ -19,7 +19,14 @@ public class LoginCheckFilter implements Filter {
         HttpSession session = ((HttpServletRequest) servletRequest).getSession();
         boolean isGet = ((HttpServletRequest) servletRequest).getMethod().equalsIgnoreCase("GET");
         boolean isHtml = uri.endsWith(".html");
-        if (uri.endsWith("login") || uri.endsWith("login.html")) {
+        String[] staticResources = {".js", ".css", ".jpg", ".png", ".ico", ".gif", ".jpeg"};
+        boolean isOtherStatic =  false;
+        for (String s : staticResources) {
+            if (uri.endsWith(s)) {
+                isOtherStatic = true;
+            }
+        }
+        if (uri.endsWith("login") || uri.endsWith("login.html") || isOtherStatic) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
