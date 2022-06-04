@@ -31,11 +31,10 @@ function showInfo(data, page) {
     for (var i = 0; i < data['result'].length; i++) {
         html += '<tr>';
         html += '<td>' + data['result'][i]['id'] + '</td>';
-        html += '<td><img src="' + data['result'][i]['cover'] + '" alt=""></td>';
         html += '<td>' + data['result'][i]['name'] + '</td>';
         html += '<td>' + data['result'][i]['author'] + '</td>';
         html += '<td>￥' + data['result'][i]['price'] + '</td>';
-        html += '<td>' + data['result'][i]['left'] + '</td>';
+        html += '<td>' + data['result'][i]['stock'] + '</td>';
         html += '<td>' + data['result'][i]['desc'] + '</td>';
         html += '<td>' + data['result'][i]['type'] + '</td>';
         html += '<td>';

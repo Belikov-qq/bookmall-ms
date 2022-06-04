@@ -8,19 +8,19 @@ public class Book {
     private String bookName;
     private String bookAuthor;
     private String bookPrice;
-    private String bookImgPath;
+    private String bookStock;
     private String bookDesc;
     private String bookType;
 
     public Book() {
     }
 
-    public Book(String bookId, String bookName, String bookAuthor, String bookPrice, String bookImgPath, String bookDesc, String bookType) {
+    public Book(String bookId, String bookName, String bookAuthor, String bookPrice, String bookStock, String bookDesc, String bookType) {
         this.bookId = bookId;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.bookPrice = bookPrice;
-        this.bookImgPath = bookImgPath;
+        this.bookStock = bookStock;
         this.bookDesc = bookDesc;
         this.bookType = bookType;
     }
@@ -32,7 +32,7 @@ public class Book {
                 ", bookName='" + bookName + '\'' +
                 ", bookAuthor='" + bookAuthor + '\'' +
                 ", bookPrice='" + bookPrice + '\'' +
-                ", bookImgPath='" + bookImgPath + '\'' +
+                ", bookStock='" + bookStock + '\'' +
                 ", bookDesc='" + bookDesc + '\'' +
                 ", bookType='" + bookType + '\'' +
                 '}';
@@ -70,12 +70,12 @@ public class Book {
         this.bookPrice = bookPrice;
     }
 
-    public String getBookImgPath() {
-        return bookImgPath;
+    public String getBookStock() {
+        return bookStock;
     }
 
-    public void setBookImgPath(String bookImgPath) {
-        this.bookImgPath = bookImgPath;
+    public void setBookStock(String bookStock) {
+        this.bookStock = bookStock;
     }
 
     public String getBookDesc() {

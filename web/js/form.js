@@ -7,8 +7,8 @@ $(function () {
 });
 
 function submit(url, id){
-    var ids = ['id', 'name', 'author', 'price', 'cover', 'description'];
-    var names = ['bookId', 'name', 'author', 'price', 'cover', 'desc'];
+    var ids = ['id', 'name', 'author', 'price', 'stock', 'description'];
+    var names = ['bookId', 'name', 'author', 'price', 'stock', 'desc'];
     var book_info = {};
     for (var i = 0; i < names.length; i++) {
         book_info[names[i]] = $('#' + ids[i]).val();

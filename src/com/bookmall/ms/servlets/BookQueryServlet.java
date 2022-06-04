@@ -36,7 +36,7 @@ public class BookQueryServlet extends HttpServlet {
         jsonObject.put("author", book.getBookAuthor());
         jsonObject.put("type", book.getBookType());
         jsonObject.put("desc", book.getBookDesc());
-        jsonObject.put("cover", book.getBookImgPath());
+        jsonObject.put("stock", book.getBookStock());
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("result", jsonObject);
 

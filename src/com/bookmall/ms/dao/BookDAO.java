@@ -21,10 +21,10 @@ public class BookDAO {
     public int insertBook(Book book){
         int i = 0;
         try {
-            String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_img_path,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?,?)";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             //给SQL中的参数赋值
-            Object[] params = {book.getBookId(), book.getBookName(), book.getBookAuthor(), book.getBookPrice(), book.getBookImgPath(), book.getBookDesc(), book.getBookType()};
+            Object[] params = {book.getBookId(), book.getBookName(), book.getBookAuthor(), book.getBookPrice(), book.getBookDesc(),book.getBookStock(), book.getBookType()};
             i = queryRunner.update(sql, params);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class BookDAO {
     public List<Book> selectBooks(int start,int limit){
         List<Book> bookList = null;
         try {
-            String sql = "SELECT book_id bookId, book_name bookName, book_author bookAuthor, book_price bookPrice, book_img_path bookImaPath, book_desc bookDesc, book_stock bookStock, book_type bookType FROM books limit ?,? ";
+            String sql = "SELECT book_id bookId, book_name bookName, book_author bookAuthor, book_price bookPrice, book_desc bookDesc, book_stock bookStock, book_type bookType FROM books limit ?,? ";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             bookList = (List<Book>) queryRunner.query(sql, new BeanHandler<Book>(Book.class),start,limit);
         } catch (SQLException e) {
@@ -89,7 +89,7 @@ public class BookDAO {
     public Book selectBooksByBookId(String bookId){
         Book book = null;
         try {
-            String sql = "SELECT book_id bookId, book_name bookName, book_author bookAuthor, book_price bookPrice, book_img_path bookImaPath, book_desc bookDesc, book_stock bookStock, book_type bookType FROM books where book_id=?";
+            String sql = "SELECT book_id bookId, book_name bookName, book_author bookAuthor, book_price bookPrice, book_desc bookDesc, book_stock bookStock, book_type bookType FROM books where book_id=?";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             book = queryRunner.query(sql, new BeanHandler<Book>(Book.class), bookId);
         } catch (SQLException e) {
@@ -104,10 +104,10 @@ public class BookDAO {
     public int updateBook(Book book){
         int i = 0;
         try {
-            String sql = "update books set book_name=?,book_author=?,book_price=?,book_img_path=?,book_desc=?,book_stock=?,book_type=? where book_id=?";
+            String sql = "update books set book_name=?,book_author=?,book_price=?,book_desc=?,book_stock=?,book_type=? where book_id=?";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             //给SQL中的参数赋值
-            Object[] params = {book.getBookName(), book.getBookAuthor(), book.getBookPrice(), book.getBookImgPath(), book.getBookDesc(), book.getBookType(), book.getBookId()};
+            Object[] params = {book.getBookName(), book.getBookAuthor(), book.getBookPrice(), book.getBookDesc(),book.getBookStock(), book.getBookType(), book.getBookId()};
             i = queryRunner.update(sql, params);
         } catch (SQLException e) {
             e.printStackTrace();

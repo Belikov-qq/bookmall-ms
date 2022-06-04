@@ -25,6 +25,7 @@ function initInfo(){
                 }, 2000);
                 return;
             }
+            $('#stock')[0].value = j['result'].hasOwnProperty('stock') ? j['result']['stock'] : '';
             $('#name')[0].value = j['result'].hasOwnProperty('name') ? j['result']['name'] : '';
             $('#author')[0].value = j['result'].hasOwnProperty('author') ? j['result']['author'] : '';
             $('#price')[0].value = j['result'].hasOwnProperty('price') ? j['result']['price'] : '';

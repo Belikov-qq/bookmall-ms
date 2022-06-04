@@ -36,7 +36,7 @@ public class BookAddServlet extends HttpServlet {
         book.setBookName(escape(request.getParameter("name")));
         book.setBookAuthor(escape(request.getParameter("author")));
         book.setBookPrice(escape(request.getParameter("price")));
-        book.setBookImgPath(escape(request.getParameter("cover")));
+        book.setBookStock(escape(request.getParameter("stock")));
         book.setBookDesc(escape(request.getParameter("desc")));
         book.setBookType(escape(request.getParameter("type")));
 

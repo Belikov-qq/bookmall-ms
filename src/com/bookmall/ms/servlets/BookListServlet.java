@@ -54,7 +54,7 @@ public class BookListServlet extends HttpServlet {
             jsonObject.put("author", book.getBookAuthor());
             jsonObject.put("type", book.getBookType());
             jsonObject.put("desc", book.getBookDesc());
-            jsonObject.put("cover", book.getBookImgPath());
+            jsonObject.put("stock", book.getBookStock());
             jsonArray.add(jsonObject);
         }
         JSONObject jsonObject = new JSONObject();
