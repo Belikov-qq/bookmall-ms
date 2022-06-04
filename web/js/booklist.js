@@ -61,7 +61,7 @@ function getPage() {
 
 function prevPage() {
     var page = getPage();
-    if (page[0] > 1) {
+    if (page[0] >= 1) {
         getInfo(page[0] - 1);
     }else {
         Message('error', '已经是第一页了');
@@ -112,7 +112,7 @@ function firstPage() {
 }
 
 function lastPage() {
-    getInfo(getPage()[1]-1);
+    getInfo(getPage()[1]);
 }
 
 function modifyBook(id){
