@@ -12,12 +12,11 @@ import java.sql.SQLException;
 public class UserDAO {
     public User selectUserByUserName(String userName){
         User user = null;
-        String sql = "SELECT user_id userId, user_name userName, user_pwd userPwd,\n" +
-                "real_name realName, user_gender userGender, user_tel userTel,user_desc userDesc from users WHERE user_name=?";
-        QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
-        try{
-            user = queryRunner.query(sql, new BeanHandler<User>(User.class));
-        }catch (SQLException e){
+        try {
+            String sql = "select user_id userId,user_name userName,user_pwd userPwd,real_name realName,user_gender userGender,user_tel userTel,user_desc userDesc from users where user_name=?";
+            QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
+            user = queryRunner.query(sql, new BeanHandler<User>(User.class),userName);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
