@@ -4,9 +4,11 @@ import com.bookmall.ms.dto.Book;
 import com.bookmall.ms.utils.DruidUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +23,7 @@ public class BookDAO {
     public int insertBook(Book book){
         int i = 0;
         try {
-            String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO books(book_id,book_name,book_author,book_price,book_desc,book_stock,book_type) VALUES(?,?,?,?,?,?,?)";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
             //给SQL中的参数赋值
             Object[] params = {book.getBookId(), book.getBookName(), book.getBookAuthor(), book.getBookPrice(), book.getBookDesc(),book.getBookStock(), book.getBookType()};
@@ -39,11 +41,11 @@ public class BookDAO {
      * @return 返回一页图书信息
      */
     public List<Book> selectBooks(int start,int limit){
-        List<Book> bookList = null;
+        List<Book> bookList = new ArrayList<Book>(limit);
         try {
             String sql = "SELECT book_id bookId, book_name bookName, book_author bookAuthor, book_price bookPrice, book_desc bookDesc, book_stock bookStock, book_type bookType FROM books limit ?,? ";
             QueryRunner queryRunner = new QueryRunner(DruidUtils.getDataSource());
-            bookList = (List<Book>) queryRunner.query(sql, new BeanHandler<Book>(Book.class),start,limit);
+            bookList = (List<Book>) queryRunner.query(sql, new BeanListHandler<Book>(Book.class),start,limit);
         } catch (SQLException e) {
             e.printStackTrace();
         }

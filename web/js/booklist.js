@@ -82,7 +82,7 @@ function deleteBook(id) {
         url: '/bookmall_ms/delete',
         type: 'POST',
         data: {
-            "id": id,
+            "bookId": id,
         },
         cookie: true,
         success: function (data) {
@@ -96,7 +96,7 @@ function deleteBook(id) {
             }
             if (j['error'] == 0) {
                 Message('success', '删除成功');
-                getInfo(getPage()[0]);
+                getInfo(getPage()[0]-1);
             }else {
                 Message('error', '删除失败');
             }
