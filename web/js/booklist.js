@@ -96,7 +96,7 @@ function deleteBook(id) {
             }
             if (j['error'] == 0) {
                 Message('success', '删除成功');
-                getInfo(getPage()[0]-1);
+                getInfo(getPage()[0]);
             }else {
                 Message('error', '删除失败');
             }
