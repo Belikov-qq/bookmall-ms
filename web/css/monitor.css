@@ -1,12 +1,24 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#docs {
+    min-height: 100%;
+    width: 100%;
+}
+
 .bd-docs-nav {
     position: relative;
     top: -2px;
     --primary: #fff;
     background-color: #151822;
+    height: 110%;
 }
 
 .bd-category.is-current .bd-category-name {
     background-color: #006eff;
+    border-radius: 0;
 }
 
 .bd-name {
@@ -15,6 +27,7 @@
 
 .bd-category-name:hover {
     background-color: #3c3f41;
+    border-radius: 0;
 }
 
 .navbar {
@@ -26,6 +39,8 @@
 }
 
 .bd-docs-main {
+    width: 100%;
+    padding-bottom: 0;
     position: relative;
     top: 30px;
     left: 50px;
@@ -33,8 +48,14 @@
 
 .button.is-primary {
     background-color: #006eff;
+
 }
 
 .button.is-primary:hover {
     background-color: rgba(0, 110, 255, 0.87);
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
