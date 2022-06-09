@@ -19,9 +19,22 @@ html, body {
     text-shadow: 3px 3px 3px #000000;
     font-size: 30px;
     font-weight: bold;
+}
+#login_header{
     position: absolute;
     top: 30px;
-    right: 450px;
+    left: 500px;
+}
+
+.typed-cursor {
+    size: 100px;
+    opacity: 1;
+    font-weight: 100;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    -ms-animation: blink 0.7s infinite;
+    -o-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
 }
 
 .button.is-primary {

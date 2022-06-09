@@ -11,10 +11,8 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/msg.js"></script>
     <script src="js/login.js"></script>
-
-    <!--    加密-->
-    <!--    <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.js"></script>-->
-    <!--    <script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js"></script>-->
+    <script src="js/SHA256.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 
     <style>
 
@@ -23,7 +21,7 @@
 
 <body>
 <div class="container" id="login_header">
-    <h1 class="title">在线书城后台管理系统-欢迎您登录</h1>
+    <span class="title"></span>
 </div>
 
 <div class="container" id="login_content">
@@ -66,6 +64,5 @@
     </div>
 </div>
 <img src="img/login_bg.jpg" alt="background" id="bgImg">
-<div class="qmsg qmsg-wrapper qmsg-is-initialized"></div> <!-- 显示消息  -->
 </body>
 </html>
