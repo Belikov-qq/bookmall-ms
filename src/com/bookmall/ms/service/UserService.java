@@ -11,16 +11,17 @@ public class UserService {
      *
      * @param userName
      * @param userPwd
+     * @param salt
      * @return
      */
-    public User checkLogin(String userName, String userPwd) {
+    public User checkLogin(String userName, String userPwd, String salt) {
         //1.根据userName查询管理员信息
         UserDAO userDAO = new UserDAO();
         User user = userDAO.selectUserByUserName(userName);
         //2.判断密码
         if (user == null) {
             return null;
-        } else if (user.getUserPwd().equals(userPwd)) {
+        } else if (EncryptSha256.getSha256Str(user.getUserPwd() + salt).equals(userPwd)) {
             //密码相等，登陆成功！
             return user;
         } else {
